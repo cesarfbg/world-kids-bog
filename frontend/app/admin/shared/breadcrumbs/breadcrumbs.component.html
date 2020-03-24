@@ -1,0 +1,13 @@
+<div class="row page-titles">
+    <div class="col-md-5 align-self-center">
+        <h3 class="text-themecolor">{{ lastCrumb }}</h3>
+    </div>
+    <div class="col-md-7 align-self-center">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a routerLink="/admin/">Inicio</a>
+            </li>
+            <li *ngIf="lastCrumb !== 'Inicio'" class="breadcrumb-item active">{{ lastCrumb }}</li>
+        </ol>
+    </div>
+</div>

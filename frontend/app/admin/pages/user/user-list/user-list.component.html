@@ -1,0 +1,72 @@
+<div class="row animated fadeIn">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <input #input (keyup)="findUsers( input )" type="text" class="form-control" placeholder="Buscar usuarios">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row animated fadeIn" *ngIf="usersLoaded">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                
+                <h3 class="card-title">Lista de usuarios <small>({{usersCount}})</small></h3>
+
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th class="text-center">Nombre</th>
+                            <th class="text-center">Correo</th>
+                            <th class="text-center">Rol</th>
+                            <th class="text-center">Estatus</th>
+                            <th class="text-center">Contraseña</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let user of shownUsers" [ngClass]="{'font-bold': user.role === 'ADMIN_ROLE'}">
+                            <td class="text-center hover-clickable hover-subline" (click)="changeUserName(user)">{{user.name}}</td>
+                            <td class="text-center hover-clickable hover-subline" (click)="changeUserEmail(user)">{{user.email}}</td>
+                            <td class="text-center">
+                                <select *ngIf="userService.user._id !== user._id" name="role" [(ngModel)]="user.role" class="form-control" (change)="changeUserRole(user)">
+                                    <option value="ADMIN_ROLE">Administrador</option>
+                                    <option value="USER_ROLE">Editor</option>
+                                </select>
+                                <div    *ngIf="userService.user._id === user._id"
+                                        [attr.data-toggle]="userService.user._id === user._id ? 'tooltip': null"
+                                        [attr.title]="userService.user._id === user._id ? '¡No puedes cambiar tu propio rol!': null">
+                                    {{user.role === 'ADMIN_ROLE' ? 'Administrador' : 'Editor'}}
+                                </div>
+                            </td>
+                            <td class="text-center">
+                                <label  class="label hover-clickable"
+                                        [ngClass]="{'label-megna': user.status, 'label-danger': !user.status}"
+                                        (click)="changeUserStatus( user )"
+                                        [attr.data-toggle]="userService.user._id === user._id ? 'tooltip': null"
+                                        [attr.title]="userService.user._id === user._id ? '¡No puedes cambiar tu propio status!': null">
+                                        <i class="fa fa-power-off"></i>
+                                        {{ user.status ? 'Activo' : 'Inactivo' }}
+                                </label>
+                            </td>
+                            <td class="text-center font-bold" (click)="changeUserPassword(user)"><b class="hover-clickable hover-subline">Cambiar</b></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row animated fadeIn" *ngIf="!usersLoaded">
+    <div class="text-center col-12">
+        <h2><b>Cargando usuarios</b></h2>
+        <br>
+        <i class="fa fa-refresh fa-spin fa-4x"></i>
+        <br>
+        <br>
+        <h3>Espere por favor</h3>
+    </div>
+</div>

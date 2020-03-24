@@ -1,0 +1,93 @@
+<div class="row justify-content-center animated fadeIn">
+    <div class="col-lg-10 col-sm-12">
+        <div class="card">
+            <div class="card-body">
+                <form [formGroup]="userForm" (ngSubmit)="createUser()" autocomplete="off">
+                    <div class="form-body">
+                        <h3 class="card-title">Creación de un nuevo usuario</h3>
+                        <h5 class="card-subtitle">Rellene todos los campos del formulario</h5>
+                        <hr>
+                        <div class="row p-t-20">
+                            <div class="col-md-6">
+                                <div class="form-group" [ngClass]="{'has-danger': userForm.controls.name.errors && !userForm.controls.name.pristine}">
+                                    <label>Nombre completo</label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon"><i class="ti-user"></i></div>
+                                        <input formControlName="name" name="name" type="text" class="form-control form-control-danger" placeholder="Nombre y apellido">
+                                    </div>
+                                    <small *ngIf="userForm.controls.name.errors?.required && !userForm.controls.name.pristine" class="form-control-feedback"> El nombre es obligatorio. </small>
+                                    <small *ngIf="userForm.controls.name.errors?.minlength && !userForm.controls.name.pristine" class="form-control-feedback"> Mínimo 5 caracteres. </small>
+                                    <small *ngIf="userForm.controls.name.errors?.maxlength && !userForm.controls.name.pristine" class="form-control-feedback"> Máximo 18 caracteres. </small>
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Rol del usuario</label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon"><i class="ti-key"></i></div>
+                                        <select formControlName="role" name="role" class="form-control custom-select">
+                                            <option value="USER_ROLE">Editor</option>
+                                            <option value="ADMIN_ROLE">Administrador</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group" [ngClass]="{'has-danger': userForm.controls.email.errors && !userForm.controls.email.pristine}">
+                                    <label for="exampleInputEmail1">Correo electrónico</label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon"><i class="ti-email"></i></div>
+                                        <input formControlName="email" name="email" type="email" class="form-control form-control-danger" placeholder="Correo electrónico">
+                                    </div>
+                                    <small *ngIf="userForm.controls.email.errors?.required && !userForm.controls.email.pristine" class="form-control-feedback"> El correo es obligatorio. </small>
+                                    <small *ngIf="userForm.controls.email.errors?.pattern && !userForm.controls.email.pristine" class="form-control-feedback"> No es un correo válido. </small>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label"><i class="ti-power-off"></i> Status del usuario</label>
+                                    <div class="mt-2">
+                                        <input formControlName="status" name="status" [value]="true" type="radio" id="status-true" class="with-gap radio-col-blue">
+                                        <label for="status-true" class="mr-3">Activado</label>
+                                        <input formControlName="status" name="status" [value]="false" type="radio" id="status-false" class="with-gap radio-col-blue">
+                                        <label for="status-false">Desactivado</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group" [ngClass]="{'has-danger': userForm.controls.password1.errors && !userForm.controls.password1.pristine}">
+                                    <label>Contraseña</label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon"><i class="ti-lock"></i></div>
+                                        <input formControlName="password1" name="password1" type="password" class="form-control form-control-danger" placeholder="Contraseña">
+                                    </div>
+                                    <small *ngIf="userForm.controls.password1.errors?.required && !userForm.controls.password1.pristine" class="form-control-feedback"> La contraseña es obligatoria. </small>
+                                    <small *ngIf="userForm.controls.password1.errors?.minlength && !userForm.controls.password1.pristine" class="form-control-feedback"> Mínimo 8 caracteres. </small>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group" [ngClass]="{'has-danger': userForm.errors?.passwordsMatch && !userForm.controls.password2.pristine}">
+                                    <label class="control-label">Confirmar contraseña</label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon"><i class="ti-lock"></i></div>
+                                        <input formControlName="password2" name="password2" type="password" class="form-control form-control-danger" placeholder="Confirmar contraseña">
+                                    </div>
+                                    <small *ngIf="userForm.errors?.passwordsMatch && !userForm.controls.password2.pristine" class="form-control-feedback"> Las contraseñas no coinciden </small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-actions text-center mt-3">
+                        <button type="submit" class="btn btn-md btn-themecolor mr-3" [ngClass]="{'disabled hover-not-allowed': userForm.invalid}" [disabled]="userForm.invalid">Crear usuario</button>
+                        <button type="button" class="btn btn-md btn-inverse m-auto">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

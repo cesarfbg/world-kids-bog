@@ -1,0 +1,92 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-4 col-xlg-3 col-md-5">
+            <div class="card text-center hover-clickable" (click)="changeImg()" (mouseover)="hoverImg = true" (mouseleave)="hoverImg = false">
+                <img *ngIf="userService.user.img !== 'default'" class="card-img" [src]="userService.user.img" alt="Card image">
+                <img *ngIf="userService.user.img === 'default'" class="card-img" src="assets/images/users/profile.png" alt="Card image">
+                <h4 class="card-title mt-3" [ngClass]="{'font-bold': hoverImg}">Cambiar imagen</h4>
+            </div>
+        </div>
+        <div class="col-lg-8 col-xlg-9 col-md-7">
+            <div class="card">
+                <ul class="nav nav-tabs profile-tab" role="tablist">
+                    <li class="nav-item"> <a class="nav-link active font-bold" data-toggle="tab" href="#datos-del-perfil" role="tab" aria-expanded="true">Datos del perfil</a> </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="datos-del-perfil" role="tabpanel" aria-expanded="true">
+                        <div class="card-body">
+                            <form class="form-horizontal form-material" [formGroup]="profileForm" (ngSubmit)="updateUser()" autocomplete="off">
+
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-12">
+                                        <div class="form-group">
+                                            <label class="font-bold">Nombre completo</label>
+                                            <input formControlName="name" name="name" type="text" placeholder="Nombre y Apellido" class="form-control form-control-line">
+                                            <small *ngIf="profileForm.controls.name.errors?.required && !profileForm.controls.name.pristine" class="form-control-feedback text-danger"> El nombre es obligatorio. </small>
+                                            <small *ngIf="profileForm.controls.name.errors?.minlength && !profileForm.controls.name.pristine" class="form-control-feedback text-danger"> Mínimo 5 caracteres. </small>
+                                            <small *ngIf="profileForm.controls.name.errors?.maxlength && !profileForm.controls.name.pristine" class="form-control-feedback text-danger"> Máximo 18 caracteres. </small>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-12">
+                                        <div class="form-group">
+                                            <label class="font-bold">Correo electrónico</label>
+                                            <input formControlName="email" name="email" type="email" placeholder="Correo electrónico" class="form-control form-control-line">
+                                            <small *ngIf="profileForm.controls.email.errors?.required && !profileForm.controls.email.pristine" class="form-control-feedback text-danger"> El correo es obligatorio. </small>
+                                            <small *ngIf="profileForm.controls.email.errors?.pattern && !profileForm.controls.email.pristine" class="form-control-feedback text-danger"> No es un correo válido. </small>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-12">
+                                        <div class="form-group">
+                                            <label class="font-bold">Rol</label>
+                                            <div class="mt-1">{{ userService.user.role === 'ADMIN_ROLE' ? 'Administrador' : 'Editor' }}</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-12">
+                                        <div class="form-group">
+                                            <label class="font-bold">Estatus</label>
+                                            <div class="mt-1">{{ userService.user.status ? 'Activo' : 'Inactivo' }}</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div [ngClass]="{'col-lg-6 col-md-12': !profileForm.controls.password1.pristine,
+                                                     'col-12 text-center': profileForm.controls.password1.pristine  }">
+                                        <div class="form-group">
+                                            <label class="font-bold">Nueva Contraseña</label>
+                                            <input  [ngClass]="{'text-center': profileForm.controls.password1.pristine}"
+                                                    (focus)="profileForm.patchValue({ password1: '' })"
+                                                    formControlName="password1"
+                                                    name="password1"
+                                                    type="password"
+                                                    class="form-control form-control-line">
+                                            <small *ngIf="profileForm.controls.password1.errors?.required && !profileForm.controls.password1.pristine" class="form-control-feedback text-danger"> La contraseña es obligatoria. </small>
+                                            <small *ngIf="profileForm.controls.password1.errors?.minlength && !profileForm.controls.password1.pristine" class="form-control-feedback text-danger"> Mínimo 8 caracteres. </small>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-12 animated slideInRight faster" *ngIf="!profileForm.controls.password1.pristine">
+                                        <div class="form-group">
+                                            <label class="font-bold">Confirmar Contraseña</label>
+                                            <input formControlName="password2" name="password2" type="password" class="form-control form-control-line">
+                                            <small *ngIf="profileForm.errors?.passwordsMatch && !profileForm.controls.password2.pristine" class="form-control-feedback text-danger"> Las contraseñas no coinciden </small>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group mt-5">
+                                    <div class="col-sm-6 m-auto">
+                                        <button class="btn btn-themecolor btn-block" [disabled]="profileForm.invalid || profileForm.pristine" [ngClass]="{'hover-not-allowed': profileForm.invalid || profileForm.pristine}">Actualizar perfil</button>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

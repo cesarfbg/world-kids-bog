@@ -1,0 +1,44 @@
+<div class="row animated fadeIn">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Temas personalizados</h4>
+                <div class="r-panel-body">
+                    <div class="row mt-5">
+                        <div class="col-6 text-center font-bold">
+                            Temas claros
+                        </div>
+                        <div class="col-6 text-center font-bold">
+                            Temas oscuros
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-6">
+                            <ul id="themecolors" class="m-0 p-0 text-center">
+                                <li><a (click)="changeTheme('default')" data-theme="default" class="selector hover-clickable default-theme" [ngClass]="{'working': settingsService.settings.theme=='default'}"></a></li>
+                                <li><a (click)="changeTheme('green')" data-theme="green" class="selector hover-clickable green-theme" [ngClass]="{'working': settingsService.settings.theme=='green'}"></a></li>
+                                <li><a (click)="changeTheme('red')" data-theme="red" class="selector hover-clickable red-theme" [ngClass]="{'working': settingsService.settings.theme=='red'}"></a></li>
+                                <li><a (click)="changeTheme('blue')" data-theme="blue" class="selector hover-clickable blue-theme" [ngClass]="{'working': settingsService.settings.theme=='blue'}"></a></li>
+                                <li><a (click)="changeTheme('purple')" data-theme="purple" class="selector hover-clickable purple-theme" [ngClass]="{'working': settingsService.settings.theme=='purple'}"></a></li>
+                                <li><a (click)="changeTheme('megna')" data-theme="megna" class="selector hover-clickable megna-theme" [ngClass]="{'working': settingsService.settings.theme=='megna'}"></a></li>
+                            </ul>
+                        </div>
+                        <div class="col-6">
+                            <ul id="themecolors" class="m-0 p-0 text-center">
+                                <li><a (click)="changeTheme('default-dark')" data-theme="default-dark" class="selector hover-clickable default-dark-theme" [ngClass]="{'working': settingsService.settings.theme=='default-dark'}"></a></li>
+                                <li><a (click)="changeTheme('green-dark')" data-theme="green-dark" class="selector hover-clickable green-dark-theme" [ngClass]="{'working': settingsService.settings.theme=='green-dark'}"></a></li>
+                                <li><a (click)="changeTheme('red-dark')" data-theme="red-dark" class="selector hover-clickable red-dark-theme" [ngClass]="{'working': settingsService.settings.theme=='red-dark'}"></a></li>
+                                <li><a (click)="changeTheme('blue-dark')" data-theme="blue-dark" class="selector hover-clickable blue-dark-theme" [ngClass]="{'working': settingsService.settings.theme=='blue-dark'}"></a></li>
+                                <li><a (click)="changeTheme('purple-dark')" data-theme="purple-dark" class="selector hover-clickable purple-dark-theme" [ngClass]="{'working': settingsService.settings.theme=='purple-dark'}"></a></li>
+                                <li><a (click)="changeTheme('megna-dark')" data-theme="megna-dark" class="selector hover-clickable megna-dark-theme" [ngClass]="{'working': settingsService.settings.theme=='megna-dark'}"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

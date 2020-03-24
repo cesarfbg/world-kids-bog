@@ -1,0 +1,64 @@
+{
+  "name": "calier-website",
+  "version": "1.0.0",
+  "description": "Calier Internacional de Colombia website fullstack project",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "start": "npm i && tsc && node ./backend/dist",
+    "dev": "concurrently -n 'NODE,ANGULAR' -c 'bgGreen.bold,bgRed.bold' 'npm:backendDev' 'npm:frontendDev'",
+    "backendDev": "cd backend && nodemon -e ts --exec 'tsc || exit 1 && node ../dist/backend/index.js'",
+    "frontendDev": "cd frontend && ng serve",
+    "ng": "cd frontend/ && ng"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cesarfbg/Calier-Website.git"
+  },
+  "author": "César Blanco",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cesarfbg/Calier-Website/issues"
+  },
+  "homepage": "https://github.com/cesarfbg/Calier-Website#readme",
+  "dependencies": {
+    "@angular/animations": "~9.0.5",
+    "@angular/common": "~9.0.5",
+    "@angular/compiler": "~9.0.5",
+    "@angular/core": "~9.0.5",
+    "@angular/forms": "~9.0.5",
+    "@angular/platform-browser": "~9.0.5",
+    "@angular/platform-browser-dynamic": "~9.0.5",
+    "@angular/router": "~9.0.5",
+    "bcrypt": "^4.0.1",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.3",
+    "mongoose-unique-validator": "^2.0.3",
+    "rxjs": "~6.5.4",
+    "rxjs-compat": "^6.5.4",
+    "sweetalert2": "^9.10.0",
+    "tslib": "^1.10.0",
+    "zone.js": "~0.10.2"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "~0.900.5",
+    "@angular/cli": "~9.0.5",
+    "@angular/compiler-cli": "~9.0.5",
+    "@angular/language-service": "~9.0.5",
+    "@types/bcrypt": "^3.0.0",
+    "@types/cors": "^2.8.6",
+    "@types/express": "^4.17.3",
+    "@types/jsonwebtoken": "^8.3.8",
+    "@types/mongoose": "^5.7.5",
+    "@types/mongoose-unique-validator": "^1.0.3",
+    "@types/node": "^12.11.1",
+    "codelyzer": "^5.1.2",
+    "concurrently": "^5.1.0",
+    "ts-node": "~8.3.0",
+    "tslint": "~5.18.0",
+    "typescript": "~3.6.4"
+  }
+}

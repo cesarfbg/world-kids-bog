@@ -1,0 +1,98 @@
+<aside class="left-sidebar">
+    <div class="scroll-sidebar">
+        <nav class="sidebar-nav">
+            <ul id="sidebarnav">
+                <li class="user-profile">
+                    <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
+                        <img *ngIf="userService.user.img !== 'default'" [src]="userService.user.img" alt="user">
+                        <img *ngIf="userService.user.img === 'default'" src="assets/images/users/profile.png" alt="user">
+                        <span class="hide-menu">{{ userService.user.name }}</span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a routerLink="/admin/perfil" routerLinkActive="active">Perfil</a></li>
+                        <li><a routerLink="/admin/preferencias" routerLinkActive="active">Preferencias</a></li>
+                        <li><a routerLink="/admin/login" routerLinkActive="active" (click)="logout()">Cerrar Sesión</a></li>
+                    </ul>
+                </li>
+                <li *ngIf="userService.user.role === 'ADMIN_ROLE'" class="nav-devider"></li>
+                <li *ngIf="userService.user.role === 'ADMIN_ROLE'" class="nav-small-cap">Administración de Usuarios</li>
+                <li *ngIf="userService.user.role === 'ADMIN_ROLE'">
+                    <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
+                        <i class="fa fa-user-circle-o"></i>
+                        <span class="hide-menu">
+                            Usuarios
+                            <!--<span class="label label-rouded label-themecolor pull-right">4</span>-->
+                        </span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a routerLink="nuevo-usuario" routerLinkActive="active">Crear nuevo usuario</a></li>
+                        <li><a routerLink="ver-usuarios" routerLinkActive="active">Administrar usuarios</a></li>
+                    </ul>
+                </li>
+                <li class="nav-devider"></li>
+                <li class="nav-small-cap">Administración de Ingredientes</li>
+                <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Productos</span></a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a href="index.html">Crear nuevo producto</a></li>
+                        <li><a href="index2.html">Administrar productos</a></li>
+                    </ul>
+                </li>
+                <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-bullseye"></i><span class="hide-menu">Socios</span></a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a href="app-contact2.html">Crear nuevo socio</a></li>
+                        <li><a href="app-contact-detail.html">Administrar socios</a></li>
+                    </ul>
+                </li>
+                <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-email"></i><span class="hide-menu">Categorías</span></a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a href="app-email-detail.html">Crear nueva categoría</a></li>
+                        <li><a href="app-compose.html">Administrar categorías</a></li>
+                    </ul>
+                </li>
+                <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-chart-bubble"></i><span class="hide-menu">Aplicaciones</span></a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a href="ui-date-paginator.html">Crear nueva aplicación</a></li>
+                        <li><a href="ui-dragable-portlet.html">Administrar aplicaciones</a></li>
+                    </ul>
+                </li>
+                <li class="nav-devider"></li>
+                <li class="nav-small-cap">Administración del Blog</li>
+                <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-file"></i><span class="hide-menu">Posts</span></a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a href="form-tinymce.html">Crear nuevo post</a></li>
+                        <li><a href="form-tinymce.html">Administrar posts</a></li>
+                    </ul>
+                </li>
+                <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-table"></i><span class="hide-menu">Columnas</span></a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a href="table-bootstrap.html">Crear nueva columna</a></li>
+                        <li><a href="table-editable-table.html">Administrar columnas</a></li>
+                    </ul>
+                </li>
+                <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-widgets"></i><span class="hide-menu">Tags</span></a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a href="widget-apps.html">Crear nuevo tag</a></li>
+                        <li><a href="widget-charts.html">Administrar tags</a></li>
+
+                    </ul>
+                </li>
+                <li class="nav-devider"></li>
+                <li class="nav-small-cap">Administración de Contenido</li>
+                <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-book-multiple"></i><span class="hide-menu">Contacto</span></a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a href="layout-boxed.html">Datos de contacto</a></li>
+                    </ul>
+                </li>
+                <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-book-multiple"></i><span class="hide-menu">Otros</span></a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a href="layout-boxed.html">Principal</a></li>
+                        <li><a href="layout-boxed.html">CDI+D</a></li>
+                        <li><a href="layout-boxed.html">Nosotros</a></li>
+                        <li><a href="layout-boxed.html">Contacto</a></li>
+                        <li><a href="layout-boxed.html">Mapa</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</aside>
